@@ -1,6 +1,6 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/photo bleu.jpg">
+  <HelloWorld msg="TIC TAC TOE"/>
 </template>
 
 <script>
@@ -22,5 +22,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+img{
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 150px;
 }
 </style>

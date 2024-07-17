@@ -6,9 +6,7 @@
       <p>Player <span id="idSpan" class="display-player playerX">X</span>'s turn</p>
     </section>
     <section class="container">
-      <!--             on fait une boucle pour définir les cases -->
-      <div v-for="i in 9" v-on:click="()=>cliqueSur(i-1)" class="tile cache">X</div>
-     
+      
     </section>
     <section class="controls">
       <button v-on:click="reset()" id="reset">Reset</button>
@@ -52,91 +50,6 @@ const changeJoueur = (a) =>{
 
 
 }
-/************************************************************************** */
-  /*                          FUNCTION testGagne                         */
-  /************************************************************************** */
-  /*  Cette fonction vérifie si il y a un gagnant                             */
-  /************************************************************************** */
-const testGagne = (tabMatrice,joueur)=>{
-  if (joeur == 0) {
-      if (
-        (tabMatrice[0][0] == "X" &&
-          tabMatrice[0][1] == "X" &&
-          tabMatrice[0][2] == "X") ||
-        (tabMatrice[1][0] == "X" &&
-          tabMatrice[1][1] == "X" &&
-          tabMatrice[1][2] == "X") ||
-        (tabMatrice[2][0] == "X" &&
-          tabMatrice[2][1] == "X" &&
-          tabMatrice[2][2] == "X") ||
-        (tabMatrice[0][0] == "X" &&
-          tabMatrice[1][0] == "X" &&
-          tabMatrice[2][0] == "X") ||
-        (tabMatrice[0][1] == "X" &&
-          tabMatrice[1][1] == "X" &&
-          tabMatrice[2][1] == "X") ||
-        (tabMatrice[0][2] == "X" &&
-          tabMatrice[1][2] == "X" &&
-          tabMatrice[2][2] == "X") ||
-        (tabMatrice[0][0] == "X" &&
-          tabMatrice[1][1] == "X" &&
-          tabMatrice[2][2] == "X") ||
-        (tabMatrice[2][0] == "X" &&
-          tabMatrice[1][1] == "X" &&
-          tabMatrice[0][2] == "X")
-      ) {
-        test = true;
-      } else {
-        test = false;
-      }
-    } else {
-      if (
-        (tabMatrice[0][0] == "Y" &&
-          tabMatrice[0][1] == "Y" &&
-          tabMatrice[0][2] == "Y") ||
-        (tabMatrice[1][0] == "Y" &&
-          tabMatrice[1][1] == "Y" &&
-          tabMatrice[1][2] == "Y") ||
-        (tabMatrice[2][0] == "Y" &&
-          tabMatrice[2][1] == "Y" &&
-          tabMatrice[2][2] == "Y") ||
-        (tabMatrice[0][0] == "Y" &&
-          tabMatrice[1][0] == "Y" &&
-          tabMatrice[2][0] == "Y") ||
-        (tabMatrice[0][1] == "Y" &&
-          tabMatrice[1][1] == "Y" &&
-          tabMatrice[2][1] == "Y") ||
-        (tabMatrice[0][2] == "Y" &&
-          tabMatrice[1][2] == "Y" &&
-          tabMatrice[2][2] == "Y") ||
-        (tabMatrice[0][0] == "Y" &&
-          tabMatrice[1][1] == "Y" &&
-          tabMatrice[2][2] == "Y") ||
-        (tabMatrice[2][0] == "Y" &&
-          tabMatrice[1][1] == "Y" &&
-          tabMatrice[0][2] == "Y")
-      ) {
-        test = true;
-      } else {
-        test = false;
-      }
-    }
-    return test;
-}
-
-/************************************************************************** */
-  /*                          FUNCTION verifieSiGagne                         */
-  /************************************************************************** */
-  /*  Cette fonction vérifie si il y a un gagnant                             */
-  /************************************************************************** */
-  const verifieSiGagne=()=> {
-    let gagne = false;
-    let tabMatrice = this.recupMatrice();
-    gagne = this.testGagne(tabMatrice, this.joueurEnCours);
-  
-    return gagne;
-  }
-
 // fonction qui définit ce qu'il se passe si on clique sur une case
 const cliqueSur = (a) => {
   // est ce que la case est cachée
