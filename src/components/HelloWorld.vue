@@ -46,7 +46,17 @@ const reset = ()=>{
   changeJoueur(getRandomInt(2));
 }
 const changeJoueur = (a) =>{
-  
+  console.log("je fais le changement de joueur");
+    if (verifieSiGagne())
+    {
+      if (joueurEnCours==0)
+    {
+      console.log('joueur 0 a gagné')
+
+    }else{
+      console.log('joueur 1 a gagné')
+    }
+    }
     joueurEnCours=a;
     console.log(idSpan);
 
@@ -58,7 +68,9 @@ const changeJoueur = (a) =>{
   /*  Cette fonction vérifie si il y a un gagnant                             */
   /************************************************************************** */
 const testGagne = (tabMatrice,joueur)=>{
-  if (joeur == 0) {
+  
+  let test = false;
+  if (joueur == 0) {
       if (
         (tabMatrice[0][0] == "X" &&
           tabMatrice[0][1] == "X" &&
@@ -85,9 +97,9 @@ const testGagne = (tabMatrice,joueur)=>{
           tabMatrice[1][1] == "X" &&
           tabMatrice[0][2] == "X")
       ) {
-        test = true;
+         test = true;
       } else {
-        test = false;
+         test = false;
       }
     } else {
       if (
@@ -123,6 +135,36 @@ const testGagne = (tabMatrice,joueur)=>{
     }
     return test;
 }
+/************************************************************************** */
+  /*                          FUNCTION recupMatrice                           */
+  /************************************************************************** */
+  /*  Cette fonction renvoie une matrice avec les X et les Y rempli           */
+  /************************************************************************** */
+  const recupMatrice=()=> {
+    let tabMatrice = [
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ];
+    let x = 0;
+    let y = 0;
+    
+    const tabCase = Array.from(document.getElementsByClassName("tile"));
+    tabCase.forEach( (item)=> {
+      if (item.classList.contains("playerY")) {
+        tabMatrice[y][x] = "Y";
+      } else if (item.classList.contains("playerX")) {
+        tabMatrice[y][x] = "X";
+      }
+      x++;
+      if (x > 2) {
+        x = 0;
+        y++;
+      }
+    });
+  
+    return tabMatrice;
+  }
 
 /************************************************************************** */
   /*                          FUNCTION verifieSiGagne                         */
@@ -130,9 +172,11 @@ const testGagne = (tabMatrice,joueur)=>{
   /*  Cette fonction vérifie si il y a un gagnant                             */
   /************************************************************************** */
   const verifieSiGagne=()=> {
+    console.log('je fait verifieSiGagne')
     let gagne = false;
-    let tabMatrice = this.recupMatrice();
-    gagne = this.testGagne(tabMatrice, this.joueurEnCours);
+    let tabMatrice = recupMatrice();
+    console.log(tabMatrice);
+    gagne = testGagne(tabMatrice, joueurEnCours);
   
     return gagne;
   }
